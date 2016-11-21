@@ -21,7 +21,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   if (millis() - pastMillis > interval) {
-    pastMillis = millis();
+    pastMillis += interval;
     String sendStr = "test,";
     sendStr += String(getTemperature(TEMP_SENSOR_PIN));
     sendStr += ",";
