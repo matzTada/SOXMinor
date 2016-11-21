@@ -1,5 +1,5 @@
 //https://www.qoosky.io/techs/f8c35bb5d7
-//TCP/IP サーバーサイド (2乗した結果を返します)
+//TCP/IP server side return squared value
 //$ javac Server.java && java Server 8888
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,22 +11,22 @@ import java.io.DataOutputStream;
 class Server {
     public static void main(String args[]) {
         try {
-            int port = Integer.parseInt(args[0]); //サーバ側の待受ポート番号
+            int port = Integer.parseInt(args[0]); //server side port number
             ServerSocket ss = new ServerSocket(port);
 
             while(true) {
-                Socket s = ss.accept(); //クライアントからの通信開始要求が来るまで待機
+                Socket s = ss.accept(); //wait for request of client
 
-                // 以下、クライアントからの要求発生後
-                InputStream is = s.getInputStream(); //クライアントから数値を受信
+                //when request from client
+                InputStream is = s.getInputStream(); //receive value from client
                 DataInputStream dis = new DataInputStream(is);
                 int req = dis.readInt();
 
-                OutputStream os = s.getOutputStream(); //二乗した結果を送信
+                OutputStream os = s.getOutputStream(); //send squared value 
                 DataOutputStream dos = new DataOutputStream(os);
                 dos.writeInt(req*req);
 
-                // ストリームを閉じる
+                //close stream
                 dos.close();
                 dis.close();
             }

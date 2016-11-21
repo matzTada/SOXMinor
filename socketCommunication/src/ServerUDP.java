@@ -1,5 +1,5 @@
 //https://www.qoosky.io/techs/f8c35bb5d7
-//サーバーサイド 
+//server side UDP
 //$ javac Server.java && java Server 8888
 //qoosky
 import java.net.DatagramSocket;
@@ -8,21 +8,21 @@ import java.net.DatagramPacket;
 class ServerUDP {
     public static void main(String args[]) {
         try {
-            int port = Integer.parseInt(args[0]); //サーバー側の待受ポート番号
+            int port = Integer.parseInt(args[0]); //server side port number
             DatagramSocket ds = new DatagramSocket(port);
 
-            byte buffer[] = new byte[32]; //受信データを書き込むためのバッファ
+            byte buffer[] = new byte[32]; //buffer for receiving data
             while(true) {
-                // 受信したデータは実際にはbufferに格納される
+                // received data is stored to buffer
                 DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
-                ds.receive(dp); //受信するまで待機
+                ds.receive(dp); //wait for receiving
 
-                // 以下、受信後
+                // when received
                 byte received[] = new byte[dp.getLength()];
-                byte tmp[] = dp.getData(); //32バイト (buffer.length)
+                byte tmp[] = dp.getData(); //32byte (buffer.length)
                 for(int i=0; i<dp.getLength(); ++i) received[i]=tmp[i];
 
-                // 文字列化して出力
+                // output after make it string
                 String str = new String(received);
                 System.out.println(str);
             }

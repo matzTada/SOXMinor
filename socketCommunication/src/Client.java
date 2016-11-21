@@ -1,5 +1,5 @@
 //https://www.qoosky.io/techs/f8c35bb5d7
-//TCP/IP クライアントサイド
+//TCP/IP client side
 //$ javac Client.java && java Client localhost 8888 7
 //49
 import java.net.Socket;
@@ -12,21 +12,21 @@ class Client {
     public static void main(String args[]) {
         try {
             String server = args[0];
-            int port = Integer.parseInt(args[1]); //サーバー側のポート番号
+            int port = Integer.parseInt(args[1]); //server side port number
             Socket s = new Socket(server, port);
 
-            // サーバーに数値を送信
+            // send value to server
             OutputStream os = s.getOutputStream();
             DataOutputStream dos = new DataOutputStream(os);
             dos.writeInt(Integer.parseInt(args[2]));
 
-            // 演算結果を受信
+            // receive calculated value
             InputStream is = s.getInputStream();
             DataInputStream dis = new DataInputStream(is);
             int res = dis.readInt();
             System.out.println(res);
 
-            // ストリームを閉じる
+            // close stream
             dis.close();
             dos.close();
         }
