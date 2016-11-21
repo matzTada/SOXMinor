@@ -3,7 +3,7 @@ var xmppServer = "osmanthus";
 var jid = "testman@osmanthus";
 var password = "testman";
 
-var deviceName = "test2";
+var deviceName = "test5fromlocal";
 
 // var boshService = "http://sox.ht.sfc.keio.ac.jp:5280/http-bind/";
 // var xmppServer = "sox.ht.sfc.keio.ac.jp";
@@ -57,8 +57,8 @@ window.onload = function() {
 			var data_lng = new SensorData("longitude", new Date(), "139.425387", "139.425387");//create a value to publish
 			transducer_lng.setSensorData(data_lng);//set the value to the transducer
             
-			client.publishDevice(device);//publish
-			// soxEvent.soxClient.publishDevice(device);//publish
+			// client.publishDevice(device);//publish
+			soxEvent.soxClient.publishDevice(device);//publish
 		}
 	};
 	soxEventListener.connectionFailed = function(soxEvent) {

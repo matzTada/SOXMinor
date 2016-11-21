@@ -28,7 +28,11 @@ window.onload = function() {
 			console.log("[main.js] Discovered " + soxEvent.devices);
 			for (var i = 0; i < soxEvent.devices.length; i++) {
 
-				status(soxEvent.devices[i].nodeName);
+				status(""
+					+ "nodeName: " +  soxEvent.devices[i].nodeName + "\n"
+					// + "name: " +  soxEvent.devices[i].name + "\n"
+					// + "type: " +  soxEvent.devices[i].type + "\n"
+					);
 
 				// Subscribing All Device is too many and dengerous. Please filter subscribing node here.
 				// if(soxEvent.devices[i].nodeName == "testNode"){

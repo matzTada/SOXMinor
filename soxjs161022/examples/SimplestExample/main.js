@@ -3,7 +3,7 @@ var xmppServer = "osmanthus";
 var jid = "testman@osmanthus";
 var password = "testman";
 
-var deviceName = "test4";
+var deviceName = "test2";
 
 // var boshService = "http://sox.ht.sfc.keio.ac.jp:5280/http-bind/";
 // var xmppServer = "sox.ht.sfc.keio.ac.jp";
