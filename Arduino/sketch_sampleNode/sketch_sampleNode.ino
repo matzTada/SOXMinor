@@ -3,6 +3,9 @@
 #define TEMP_SENSOR_PIN A0
 #define SERIESRESISTOR 10000
 
+#define PIR_SENSOR_PIN 4
+#define LED_PIN 5
+
 SoftwareSerial mySerial(2, 3); //RX, TX
 
 long pastMillis = millis();
@@ -15,6 +18,10 @@ void setup() {
 
   Serial.println("Serial and SoftwareSerial test");
   mySerial.println("Serial and SoftwareSerial test");
+
+  pinMode(PIR_SENSOR_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
 }
 
 
@@ -25,11 +32,15 @@ void loop() {
     String sendStr = "test,";
     sendStr += String(getTemperature(TEMP_SENSOR_PIN));
     sendStr += ",";
+    sendStr += String(digitalRead(PIR_SENSOR_PIN));
+    sendStr += ",";
     sendStr += String(millis());
     sendStr += "\n";
     Serial.print(sendStr);
     mySerial.print(sendStr);
   }
+
+  digitalWrite(LED_PIN, digitalRead(PIR_SENSOR_PIN));
 }
 
 float getTemperature(int pin) { //Measure temperature, origined from Bob-san's program
