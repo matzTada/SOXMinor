@@ -1,5 +1,7 @@
 #include <SoftwareSerial.h>
 
+String MOTE_NAME = "crd";
+
 #define TEMP_SENSOR_PIN A0
 #define SERIESRESISTOR 10000
 
@@ -29,7 +31,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (millis() - pastMillis > interval) {
     pastMillis += interval;
-    String sendStr = "test,";
+    String sendStr = MOTE_NAME + ",";
     sendStr += String(getTemperature(TEMP_SENSOR_PIN));
     sendStr += ",";
     sendStr += String(digitalRead(PIR_SENSOR_PIN));
